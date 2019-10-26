@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SuccessViewController.swift
 //  Miawouf
 //
 //  Created by Frederick Port on 26/10/2019.
@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SuccessViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
-
+    
+    
+    @IBAction func dismiss() {
+        dismiss(animated: true, completion: nil)
+    }
 }
-
