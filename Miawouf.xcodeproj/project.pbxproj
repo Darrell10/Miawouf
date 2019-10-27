@@ -19,6 +19,7 @@
 		B6CA3FFF2364A6D8005D786B /* CatWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CA3FFE2364A6D8005D786B /* CatWelcomeViewController.swift */; };
 		B6CA40012364AC07005D786B /* CatFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CA40002364AC07005D786B /* CatFormViewController.swift */; };
 		B6CA40032364AC1B005D786B /* CatSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CA40022364AC1B005D786B /* CatSuccessViewController.swift */; };
+		B6E050C92365DA5B0023EF84 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E050C82365DA5B0023EF84 /* Pet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B6CA3FFE2364A6D8005D786B /* CatWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWelcomeViewController.swift; sourceTree = "<group>"; };
 		B6CA40002364AC07005D786B /* CatFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFormViewController.swift; sourceTree = "<group>"; };
 		B6CA40022364AC1B005D786B /* CatSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatSuccessViewController.swift; sourceTree = "<group>"; };
+		B6E050C82365DA5B0023EF84 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				B656B47823647EC7001B3C9E /* Races.swift */,
+				B6E050C82365DA5B0023EF84 /* Pet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				B6CA40012364AC07005D786B /* CatFormViewController.swift in Sources */,
 				B656B47B236483D4001B3C9E /* WelcomeViewController.swift in Sources */,
 				B656B46523647E7F001B3C9E /* AppDelegate.swift in Sources */,
+				B6E050C92365DA5B0023EF84 /* Pet.swift in Sources */,
 				B6CA3FFB23649A28005D786B /* FormViewController.swift in Sources */,
 				B6CA3FFF2364A6D8005D786B /* CatWelcomeViewController.swift in Sources */,
 				B6CA3FFD23649C4F005D786B /* SuccessViewController.swift in Sources */,
