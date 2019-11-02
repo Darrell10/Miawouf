@@ -8,14 +8,34 @@
 
 import UIKit
 
-class CatFormViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class CatFormViewController: UIViewController {
+    // MARK: - Property
+    var cat: Pet!
     
+    // MARK: - Outlets
     @IBOutlet weak var racePickerView: UIPickerView!
     @IBOutlet weak var hasMajoritySwitch: UISwitch!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
 
+}
+
+// MARK: - Keyboard
+extension CatFormViewController: UITextFieldDelegate {
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        nameTextField.resignFirstResponder()
+        phoneTextField.resignFirstResponder()
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+         textField.resignFirstResponder()
+         return true
+    }
+}
+
+// MARK: - PickerView
+extension CatFormViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -27,10 +47,15 @@ class CatFormViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return catRaces[row]
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+}
+ 
+// MARK: - Validate
+extension CatFormViewController {
+    @IBAction func validate() {
+        createPetObject()
+        checkPetStatus()
     }
+    
     private func createPetObject(){
         let name = nameTextField.text
         let phone = phoneTextField.text
@@ -39,17 +64,32 @@ class CatFormViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let gender: Pet.Gender = (genderIndex == 0) ? .male : .female
         let raceIndex = racePickerView.selectedRow(inComponent: 0)
         let race = dogRaces[raceIndex]
-        let cat = Pet(name: name, hasMajority: hasMajority, phone: phone, race: race, gender: gender)
-        print(cat)
+        cat = Pet(name: name, hasMajority: hasMajority, phone: phone, race: race, gender: gender)
     }
     
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        nameTextField.resignFirstResponder()
-        phoneTextField.resignFirstResponder()
+    private func checkPetStatus(){
+        switch cat.status {
+        case .accepted:
+            performSegue(withIdentifier: "segueCatToSuccess", sender: self)
+        case .rejected(let error):
+            presentAlert(with: error)
+        }
     }
     
-    @IBAction func validate() {
-        createPetObject()
+    private func presentAlert(with error: String){
+        let alertVC = UIAlertController(title: "Erreur", message: error, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertVC.addAction(action)
+        present(alertVC, animated: true, completion: nil)
     }
- 
+}
+
+// MARK: - Navigation
+extension CatFormViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueCatToSuccess"{
+            let successVC = segue.destination as! CatSuccessViewController
+            successVC.cat = cat
+        }
+    }
 }
